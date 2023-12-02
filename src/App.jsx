@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import CustomerList from './components/CustomerList';
+import TrainingList from './components/TrainingList';
+import Calendar from './components/Calendar'
+import TrainingChart from './components/TrainingChart'
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+
+  const [value, setValue] = useState('customers'); // Change 'CustomerList' to 'customers'
+
+  const handleChange = (event, newValue) => {
+    console.log("Hello World!");
+    setValue(newValue);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h2>Personal Trainer</h2>
+      <Tabs value={value} onChange={handleChange}>
+        <Tab value="customers" label="Customers" />
+        <Tab value="trainings" label="Trainings" />
+        <Tab value="calendar" label="Calendar" />
+        <Tab value="trainingchart" label="Training chart" />
+      </Tabs>
+      {value === 'customers' && <CustomerList />}
+      {value === 'trainings' && <TrainingList />}
+      {value === "calendar" && <Calendar />}
+      {value === "trainingchart" && <TrainingChart />}
+    </div>
+  );
 }
-
-export default App
