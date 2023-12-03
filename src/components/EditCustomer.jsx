@@ -79,42 +79,49 @@ export default function EditCustomer(props) {
                 <TextField
                         label='First name'
                         name='firstname'
+                        variant="standard"
                         value={customer.firstname}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='Last name'
                         name='lastname'
+                        variant="standard"
                         value={customer.lastname}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='Street address'
                         name='streetaddress'
+                        variant="standard"
                         value={customer.streetaddress}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='Postcode'
                         name='postcode'
+                        variant="standard"
                         value={customer.postcode}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='City'
                         name='city'
+                        variant="standard"
                         value={customer.city}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='Email'
                         name='email'
+                        variant="standard"
                         value={customer.email}
                         onChange={handleInputChange}>
                     </TextField>
                     <TextField
                         label='Phone'
                         name='phone'
+                        variant="standard"
                         value={customer.phone}
                         onChange={handleInputChange}>
                     </TextField>

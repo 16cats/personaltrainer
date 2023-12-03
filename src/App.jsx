@@ -3,7 +3,7 @@ import './App.css';
 import CustomerList from './components/CustomerList';
 import TrainingList from './components/TrainingList';
 import Calendar from './components/Calendar'
-import TrainingChart from './components/TrainingChart'
+import TrainingStatistics from './components/TrainingStatistics'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
@@ -23,12 +23,12 @@ export default function App() {
         <Tab value="customers" label="Customers" />
         <Tab value="trainings" label="Trainings" />
         <Tab value="calendar" label="Calendar" />
-        <Tab value="trainingchart" label="Training chart" />
+        <Tab value="trainingstatistics" label="Training Statistics" />
       </Tabs>
       {value === 'customers' && <CustomerList />}
       {value === 'trainings' && <TrainingList />}
       {value === "calendar" && <Calendar />}
-      {value === "trainingchart" && <TrainingChart />}
+      {value === "trainingstatistics" && <TrainingStatistics />}
     </div>
   );
 }

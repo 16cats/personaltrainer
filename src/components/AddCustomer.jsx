@@ -49,42 +49,49 @@ export default function AddCustomer(props) {
                     <TextField
                         label='First name'
                         name='firstname'
+                        variant="standard"
                         value={customer.firstname}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='Last name'
                         name='lastname'
+                        variant="standard"
                         value={customer.lastname}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='Street address'
                         name='streetaddress'
+                        variant="standard"
                         value={customer.streetaddress}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='Postcode'
                         name='postcode'
+                        variant="standard"
                         value={customer.postcode}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='City'
                         name='city'
+                        variant="standard"
                         value={customer.city}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='Email'
                         name='email'
+                        variant="standard"
                         value={customer.email}
                         onChange={handleInputChanged}>
                     </TextField>
                     <TextField
                         label='Phone'
                         name='phone'
+                        variant="standard"
                         value={customer.phone}
                         onChange={handleInputChanged}>
                     </TextField>

@@ -6,7 +6,9 @@ import Button from "@mui/material/Button";
 import { Snackbar } from "@mui/material";
 
 import AddCustomer from './AddCustomer';
+import AddTraining from "./AddTraining";
 import EditCustomer from "./EditCustomer";
+import TrainingList from "./TrainingList"
 
 const CustomerList = () => {
     const [customers, setCustomers] = useState([]);
@@ -22,18 +24,23 @@ const CustomerList = () => {
         { headerName: 'City', field: 'city', sortable: true, filter: true },
         { headerName: 'Email', field: 'email', sortable: true, filter: true },
         { headerName: 'Phone', field: 'phone', sortable: true, filter: true },
-
+        //add training
+        { 
+            cellRenderer: params => 
+                <AddTraining data={params.data} /> },
+        //edit customer
         {
             cellRenderer: params =>
                 <EditCustomer params={params} customer={params.data} updateCustomer={updateCustomer} />,
             width: 100
         },
-    {
-      cellRenderer: params =>
-        <Button size="small" onClick={() => removeCustomer(params.data.links[0].href)}>Remove
-        </Button>,
-      width: 100
-    },
+        //remove
+        {
+            cellRenderer: params =>
+                <Button size="small" onClick={() => removeCustomer(params.data.links[0].href)}>Remove
+                </Button>,
+                width: 100
+        },
     ];
 
 
@@ -44,7 +51,12 @@ const CustomerList = () => {
 
     const getCustomers = () => {
         fetch(REST_URL)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(responseData => {
                 if (responseData.content) {
                     console.log("Fetched Customers:", responseData.content);
@@ -53,8 +65,9 @@ const CustomerList = () => {
                     console.error("Invalid API response format", responseData);
                 }
             })
-            .catch(error => console.error(error));
-    }
+            .catch(error => console.error("Error fetching customers:", error));
+    };
+    
 
     //add customer
     const addCustomer = (customer) => {
