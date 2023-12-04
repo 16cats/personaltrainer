@@ -8,7 +8,7 @@ import { Snackbar } from "@mui/material";
 import AddCustomer from './AddCustomer';
 import AddTraining from "./AddTraining";
 import EditCustomer from "./EditCustomer";
-import TrainingList from "./TrainingList"
+import CSV from "./CSV";
 
 const CustomerList = () => {
     const [customers, setCustomers] = useState([]);
@@ -144,6 +144,7 @@ const CustomerList = () => {
             {selectedCustomer && (
                 <EditCustomer customerData={selectedCustomer} updateCustomer={updateCustomer} />
             )}
+                        <CSV customers={customers} />
         </>
     )
 }
