@@ -9,7 +9,7 @@ import Tab from '@mui/material/Tab';
 
 export default function App() {
 
-  const [value, setValue] = useState('customers'); // Change 'CustomerList' to 'customers'
+  const [value, setValue] = useState('customers');
 
   const handleChange = (event, newValue) => {
     console.log("Hello World!");

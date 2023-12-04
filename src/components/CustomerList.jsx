@@ -25,27 +25,27 @@ const CustomerList = () => {
         { headerName: 'Email', field: 'email', sortable: true, filter: true },
         { headerName: 'Phone', field: 'phone', sortable: true, filter: true },
         //add training
-        { 
-            cellRenderer: params => 
-                <AddTraining data={params.data} /> },
+        {
+            cellRenderer: params =>
+                <AddTraining data={params.data} />
+        },
         //edit customer
         {
             cellRenderer: params =>
                 <EditCustomer params={params} customer={params.data} updateCustomer={updateCustomer} />,
             width: 100
         },
-        //remove
+        //remove customer
         {
             cellRenderer: params =>
                 <Button size="small" onClick={() => removeCustomer(params.data.links[0].href)}>Remove
                 </Button>,
-                width: 100
+            width: 100
         },
     ];
 
-
-    useEffect(() => 
-    getCustomers(), []);
+    useEffect(() =>
+        getCustomers(), []);
 
     const REST_URL = 'http://traineeapp.azurewebsites.net/api/customers';
 
@@ -67,7 +67,6 @@ const CustomerList = () => {
             })
             .catch(error => console.error("Error fetching customers:", error));
     };
-    
 
     //add customer
     const addCustomer = (customer) => {
@@ -86,20 +85,20 @@ const CustomerList = () => {
             .catch(err => console.error(err))
     }
 
-    //delete customer
+    //remove customer
     const removeCustomer = (id) => {
         if (window.confirm("Are you sure?")) {
-          fetch(id, { method: 'DELETE' })
-            .then(response => {
-              if (response.ok)
-                getCustomers();
-              else
-                throw new Error("Error in DELETE: " + response.statusText);
-            })
-            .catch(err => console.error(err))
+            fetch(id, { method: 'DELETE' })
+                .then(response => {
+                    if (response.ok)
+                        getCustomers();
+                    else
+                        throw new Error("Error in DELETE: " + response.statusText);
+                })
+                .catch(err => console.error(err))
         }
-      }
-    
+    }
+
     //edit customer
     const updateCustomer = (customer, link) => {
         fetch(link, {
@@ -125,7 +124,6 @@ const CustomerList = () => {
 
     return (
         <>
-        
             <AddCustomer addCustomer={addCustomer} />
             <div className="ag-theme-material" style={{ height: '700px', width: '100%', margin: 'auto' }}>
                 <AgGridReact
@@ -144,7 +142,7 @@ const CustomerList = () => {
             {selectedCustomer && (
                 <EditCustomer customerData={selectedCustomer} updateCustomer={updateCustomer} />
             )}
-                        <CSV customers={customers} />
+            <CSV customers={customers} />
         </>
     )
 }

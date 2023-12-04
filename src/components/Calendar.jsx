@@ -42,7 +42,7 @@ const TrainingCalendar = () => {
   const events = trainings.map(mapTrainingToEvent);
 
   return (
-    <div style={{ height: 500 }}>
+    <div style={{ height: 600 }}>
       <Calendar
         localizer={localizer}
         events={events}

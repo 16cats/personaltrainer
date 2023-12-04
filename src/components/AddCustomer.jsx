@@ -6,34 +6,31 @@ export default function AddCustomer(props) {
     //state
     //customer instead of customers, as we are just going to add one customer and not control all the customers
     const [customer, setCustomer] = useState({
-        firstname: '', 
-        lastname: '', 
-        streetaddress: '', 
+        firstname: '',
+        lastname: '',
+        streetaddress: '',
         postcode: '',
         city: '',
         email: '',
         phone: ''
     });
 
-
-
     const [open, setOpen] = useState(false); //is dialog open?
 
     //functions
-    const handleClose = (event, reason) =>{
+    const handleClose = (event, reason) => {
         if (reason != 'backdropClick')
             setOpen(false);
     }
 
     const handleSave = () => {
-        props.addCustomer(customer); //päivitä tilamuuttuja car
+        props.addCustomer(customer); // update customer
         setOpen(false); //close dialog
     }
 
-    const handleInputChanged = (event) =>{
-        setCustomer({...customer, [event.target.name]: event.target.value});
+    const handleInputChanged = (event) => {
+        setCustomer({ ...customer, [event.target.name]: event.target.value });
     }
-
     //return
     //add button
     //dialog (add form)
@@ -95,7 +92,6 @@ export default function AddCustomer(props) {
                         value={customer.phone}
                         onChange={handleInputChanged}>
                     </TextField>
-
 
                 </DialogContent>
                 <DialogActions>

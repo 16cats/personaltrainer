@@ -33,7 +33,7 @@ const TrainingList = () => {
             }} >Delete</Button>,
             width: 120
         }
-        
+
     ];
 
     function dateFormatter(params) {
@@ -43,20 +43,20 @@ const TrainingList = () => {
     useEffect(() => {
         getTrainings();
     }, []);
-    
+
     const getTrainings = () => {
         fetch('https://traineeapp.azurewebsites.net/gettrainings')
-          .then(response => {
-            if (response.ok)
-              return response.json();
-            else
-              throw new Error("Error in fetch: " + response.statusText);
-          })
-          .then(data => {
-            setTrainings(data);
-          })
-          .catch(err => console.error(err));
-      };
+            .then(response => {
+                if (response.ok)
+                    return response.json();
+                else
+                    throw new Error("Error in fetch: " + response.statusText);
+            })
+            .then(data => {
+                setTrainings(data);
+            })
+            .catch(err => console.error(err));
+    };
 
     if (trainings.length === 0) {
         return <p>Loading...</p>;
@@ -64,16 +64,16 @@ const TrainingList = () => {
 
     const removeTraining = (id) => {
         if (window.confirm("Are you sure?")) {
-          fetch(id, { method: 'DELETE' })
-            .then(response => {
-              if (response.ok)
-                getTrainings();
-              else
-                throw new Error("Error in DELETE: " + response.statusText);
-            })
-            .catch(err => console.error(err))
+            fetch(id, { method: 'DELETE' })
+                .then(response => {
+                    if (response.ok)
+                        getTrainings();
+                    else
+                        throw new Error("Error in DELETE: " + response.statusText);
+                })
+                .catch(err => console.error(err))
         }
-      }
+    }
 
     return (
         <>

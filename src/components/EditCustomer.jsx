@@ -5,12 +5,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-
-
 export default function EditCustomer(props) {
 
     //state
-    const [customer, setCustomer] = useState({ 
+    const [customer, setCustomer] = useState({
         firstname: '',
         lastname: '',
         streetaddress: '',
@@ -35,35 +33,35 @@ export default function EditCustomer(props) {
     const handleSave = () => {
         // check if customer and customer.links are defined
         if (props.customer && props.customer.links) {
-          // access _links based on the actual structure
-          const customerLinks = props.customer.links;
-          
-          // modify the logic accordingly based on the actual structure
-          const customerHref = customerLinks && customerLinks.length > 0 ? customerLinks[0].href : null;
-      
-          if (customerHref) {
-            props.updateCustomer(customer, customerHref);
-            handleClose();
-          } else {
-            console.error("Invalid customer data - missing href in links:", props.customer);
-          }
+            // access _links based on the actual structure
+            const customerLinks = props.customer.links;
+
+            // modify the logic accordingly based on the actual structure
+            const customerHref = customerLinks && customerLinks.length > 0 ? customerLinks[0].href : null;
+
+            if (customerHref) {
+                props.updateCustomer(customer, customerHref);
+                handleClose();
+            } else {
+                console.error("Invalid customer data - missing href in links:", props.customer);
+            }
         } else {
-          console.error("Invalid customer data - missing links property:", props.customer);
+            console.error("Invalid customer data - missing links property:", props.customer);
         }
-      };
+    };
 
     const handleClick = () => {
-        setCustomer({ 
+        setCustomer({
             firstname: props.customer.firstname,
             lastname: props.customer.lastname,
             streetaddress: props.customer.streetaddress,
             postcode: props.customer.postcode,
             city: props.customer.city,
             email: props.customer.email,
-            phone: props.customer.phone })
+            phone: props.customer.phone
+        })
         setOpen(true);
     }
-
 
     // return
     // addbutton
@@ -76,7 +74,7 @@ export default function EditCustomer(props) {
                 onClose={handleClose}>
                 <DialogTitle>Edit customer</DialogTitle>
                 <DialogContent>
-                <TextField
+                    <TextField
                         label='First name'
                         name='firstname'
                         variant="standard"
@@ -125,7 +123,7 @@ export default function EditCustomer(props) {
                         value={customer.phone}
                         onChange={handleInputChange}>
                     </TextField>
-                    </DialogContent>
+                </DialogContent>
                 <DialogActions>
                     <Button onClick={handleSave}>Save</Button>
                     <Button onClick={handleClose}>Close</Button>

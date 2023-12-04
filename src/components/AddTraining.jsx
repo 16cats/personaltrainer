@@ -7,7 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import moment from 'moment';
 
-export default function AddTraining({ fetchTrainings, data }) {
+export default function AddTraining({ getTrainings, data }) {
   const [training, setTraining] = useState({
     activity: '',
     date: null,
@@ -39,7 +39,7 @@ export default function AddTraining({ fetchTrainings, data }) {
         if (!response.ok) {
           throw new Error(`Error (${response.status}): ${response.statusText}`);
         }
-        fetchTrainings();
+        getTrainings();
       })
       .catch(err => console.error(err));
 
